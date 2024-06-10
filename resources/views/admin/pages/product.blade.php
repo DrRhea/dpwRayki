@@ -23,7 +23,12 @@
           <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">{{ $product->deskripsi_produk}}</td>
           <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
             <a href="{{ route('admin_edit', ['id' => $product->id]) }}" class="mr-4 text-indigo-600 hover:text-indigo-900">Ubah<span class="sr-only">, {{ $product->nama_produk }}</span></a>
-            <button type="button" @click="openModal = true" class="text-red-600 hover:text-red-900">Hapus<span class="sr-only">, {{ $product->nama_produk }}</span></button>
+
+            <form class="inline" method="POST" action="{{ route('admin_delete', ['id' => $product->id]) }}">
+              @csrf
+              @METHOD('DELETE')
+              <button type="submit" class="text-red-600 hover:text-red-900">Hapus<span class="sr-only">, {{ $product->nama_produk }}</span></button>
+            </form>
           </td>
         </tr>
         @empty

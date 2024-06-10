@@ -15,7 +15,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['inter', ...defaultTheme.fontFamily.sans],
+        sans: ['Urbanist', ...defaultTheme.fontFamily.sans],
         urbanist: ['Urbanist', 'sans'],
         inter: ['inter', 'sans'],
       },

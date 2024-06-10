@@ -66,15 +66,6 @@
           </div>
         </div>
 
-        <!-- Tambah Produk Button -->
-        <div class="justify-between sm:flex sm:items-center">
-          <div class="sm:flex-auto"></div>
-          <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-            <a href="{{ route('admin_create') }}">
-              <button type="button" class="block px-5 py-3 text-sm font-semibold text-center text-white transition-colors duration-300 rounded-md shadow-md bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Tambah Produk</button>
-            </a>
-          </div>
-        </div>
       </div>
     </main>
   </div>

@@ -1,4 +1,4 @@
-!-- file tambah data -->
+<!-- file tambah data -->
 <div class="flex items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
   <div class="w-full max-w-md p-8 space-y-8 bg-blue-600 rounded-lg shadow-lg">
     <div>
@@ -26,7 +26,7 @@
       </div>
       <div>
         <button type="submit" class="relative flex justify-center w-full px-4 py-2 text-sm font-medium text-blue-600 bg-yellow-400 border border-transparent rounded-md group hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500">
-          Simpan Produk 
+          Simpan Produk
         </button>
       </div>
     </form>
