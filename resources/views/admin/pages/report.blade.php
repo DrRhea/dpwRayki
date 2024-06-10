@@ -1,40 +1,85 @@
-<p class="text-lg font-semibold text-gray-900">
-  <span class="font-medium">
-    Total Pendapatan:
-  </span>
-  Rp{{ number_format($totalPendapatan, 0, ',', '.') }}
-</p>
+@include ('admin.components.header')
 
-<h1 class="text-2xl font-semibold text-gray-900 mt-8">Top 10 Transaksi</h1>
-<ul class="divide-y divide-gray-100">
-  @foreach($topTransactions as $transaction)
-  <li class="flex justify-between py-4">
-    <div class="flex items-center gap-x-4">
-      <!-- Placeholder image -->
-      <!-- <img class="h-12 w-12 rounded-full bg-gray-200" src="https://via.placeholder.com/50" alt=""> -->
-      <div>
-        <p class="text-sm font-semibold text-gray-900">Id Transaksi : {{ $transaction->id }}</p>
-        <p class="mt-1 text-sm leading-5 text-gray-500">Rp{{ number_format($transaction->total_harga, 0, ',', '.') }}</p>
-      </div>
-    </div>
-  </li>
-  @endforeach
-</ul>
+<!-- Main content -->
+<div class="flex flex-col flex-1 ml-16 bg-gray-100">
+  @include ('admin.components.header')
 
-<h1 class="text-2xl font-semibold text-gray-900 mt-8">Laporan Pelanggan</h1>
-<ul class="divide-y divide-gray-100">
-  @foreach($customers as $customer)
-  <li class="flex justify-between py-4">
-    <div class="flex items-center gap-x-4">
-      <!-- Placeholder image -->
-      <img class="h-12 w-12 rounded-full bg-gray-200" src="https://via.placeholder.com/50" alt="">
-      <div>
-        <p class="text-sm font-semibold text-gray-900">{{ $customer->name }}</p>
-        <p class="mt-1 text-sm leading-5 text-gray-500">Total Transaksi:
-          {{ $customer->transaksi_count }}
-        </p>
+  <div class="py-10">
+    <header>
+      <div class="px-4 mx-auto mb-6 max-w-7xl sm:px-6 lg:px-8">
+        <h1 class="text-4xl font-extrabold leading-tight tracking-tight text-indigo-600">
+          Halaman Laporan
+        </h1>
       </div>
-    </div>
-  </li>
-  @endforeach
-</ul>
+    </header>
+    <main>
+      <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <!-- Total Pendapatan -->
+        <div class="p-6 mb-6 transition-shadow duration-300 bg-white rounded-lg shadow-md hover:shadow-lg">
+          <p class="text-lg font-semibold text-gray-900">
+            <span class="font-medium">Total Pendapatan:</span>
+            Rp{{ number_format($totalPendapatan, 0, ',', '.') }}
+          </p>
+        </div>
+
+        <!-- Top 10 Transaksi -->
+        <div class="p-6 mb-8 transition-shadow duration-300 bg-white rounded-lg shadow-md hover:shadow-lg">
+          <h1 class="text-2xl font-semibold text-indigo-600">Top 10 Transaksi</h1>
+          <ul class="mt-4 divide-y divide-gray-200">
+            @foreach($topTransactions as $transaction)
+            <li class="flex justify-between py-4">
+              <div class="flex items-center gap-x-4">
+                <div>
+                  <p class="text-sm font-semibold text-gray-900">Id Transaksi: {{ $transaction->id }}</p>
+                  <p class="mt-1 text-sm leading-5 text-gray-500">Rp{{ number_format($transaction->total_harga, 0, ',', '.') }}</p>
+                </div>
+              </div>
+            </li>
+            @endforeach
+          </ul>
+        </div>
+
+        <!-- Laporan Pelanggan -->
+        <div class="p-6 mb-8 transition-shadow duration-300 bg-white rounded-lg shadow-md hover:shadow-lg">
+          <h1 class="text-2xl font-semibold text-indigo-600">Laporan Pelanggan</h1>
+          <div class="mt-4 overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Nama</th>
+                  <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Total Transaksi</th>
+                  <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Foto</th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200">
+                @foreach($customers as $customer)
+                <tr>
+                  <td class="px-6 py-4 text-sm font-semibold text-gray-900 whitespace-nowrap">{{ $customer->name }}</td>
+                  <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">{{ $customer->transaksi_count }}</td>
+                  <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                    <img class="w-12 h-12 bg-gray-200 rounded-full" src="https://via.placeholder.com/50" alt="{{ $customer->name }}">
+                  </td>
+                </tr>
+                @endforeach
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Tambah Produk Button -->
+        <div class="justify-between sm:flex sm:items-center">
+          <div class="sm:flex-auto"></div>
+          <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
+            <a href="{{ route('admin_create') }}">
+              <button type="button" class="block px-5 py-3 text-sm font-semibold text-center text-white transition-colors duration-300 rounded-md shadow-md bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Tambah Produk</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+</body>
+
+</html>
